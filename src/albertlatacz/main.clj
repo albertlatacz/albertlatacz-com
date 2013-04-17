@@ -1,4 +1,4 @@
-(ns clojure-heroku-playground.main
+(ns albertlatacz.main
   (:use [ring.adapter.jetty :only [run-jetty]])
 
   (:require [albertlatacz.handler :as web]))
