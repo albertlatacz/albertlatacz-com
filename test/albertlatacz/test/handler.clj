@@ -1,7 +1,7 @@
-(ns albertlatacz-com.test.handler
+(ns albertlatacz.test.handler
   (:use clojure.test
         ring.mock.request  
-        albertlatacz-com.handler))
+        albertlatacz.handler))
 
 (deftest test-app
   (testing "main route"

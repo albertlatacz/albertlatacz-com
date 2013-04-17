@@ -1,4 +1,4 @@
-(ns albertlatacz-com.handler
+(ns albertlatacz.handler
   (:use compojure.core)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]))
