@@ -1,0 +1,103 @@
+<p>Not so long ago had an opportunity to watch presentation on how to build multithreaded application with
+    Scala/Lift and one things that was new to me was the use of Actors. <a
+            href="http://en.wikipedia.org/wiki/Actor_model"
+            target="_blank">Actor-based</a> model is nothing new and was successfully adopted by many languages
+    including Erlang and Scala, and used in highly concurrent environments such as large telecom systems. Actors operate
+    on the higher level of abstraction than threads and provide scalable, fault-tolerant way to implement concurrency.
+</p>
+
+<p>
+    So what are actors? Actors are self-containing and free-running entities that can send and respond to messages
+    from other actors in asynchronous way. Actors and messages are immutable and do not share any state between each
+    other, which solves the problem of visibility and shifts away some of the complexity around threads. There are
+    many frameworks available for Java but in this tutorial I will show how to use Akka to implement Actors.
+    <a href="http://akka.io/" target="_blank">Akka</a> is a Scala framework which also happen to have decent Java
+    API.
+    This is perfect if you are planning to move to Scala and looking to shorten the learning curve. I will be using
+    IntelliJ IDEA (community edition freely available from <a href="http://www.jetbrains.com/idea"
+                                                              target="_blank">here</a>)
+    and Maven. Now, lets get down to implementation...
+</p>
+
+<p>First we need to define dependencies and repository, that we will source Akka library from. My pom.xml looks
+    something like this:</p>
+
+<script src="https://gist.github.com/albertlatacz/5411085.js?file=pom.xml"></script>
+
+<p>
+    Once you have your project setup we can start creating first actors! Let's start with simple one way communication
+    with <em>UntypedActor</em>, which allow sending and receiving messages through defined interface.
+</p>
+
+<script src="https://gist.github.com/albertlatacz/5411085.js?file=PostOfficeActor.java"></script>
+
+<p>
+    The above code defines untyped actor that will consume messages through <em>onReceive()</em> method. Note that in
+    the <em>onReceive()</em> we print out message and the thread that message was handled in. We will talk about how
+    threads and actors relate to each other later on but now let's create and activate our actor. First define the
+    message that we are going to send:
+</p>
+
+<script src="https://gist.github.com/albertlatacz/5411085.js?file=Letter.java"></script>
+
+<p>
+    The code below creates and activates an instance of PostOfficeActor and sends a message by calling
+    <em>sendOneWay()</em>.
+</p>
+
+<script src="https://gist.github.com/albertlatacz/5411085.js?file=actorWithDefaultConstructor.java"></script>
+
+<p>
+    There are a few things to notice here. In order to create actor you need to call <em>Actors.actorOf()</em> method,
+    which is provided by the framework. It is necessary due to the fact that Akka uses <a
+        href="http://en.wikipedia.org/wiki/Active_object" target="_blank">active objects</a> pattern to manage threads
+    and delegate handling to appropriate actors. This way of handling threads shields us from accessing them directly,
+    imposes asynchronous character of messaging and allows to schedule executions according to specified resources. Once
+    actor is created we can access it by sending messages to associated proxy <em>ActorRef</em>
+    (<em>postOfficeEmployee</em> variable in our case). Since messages are handled in a separate thread, we need to wait
+    for result and thus <em>Thread.sleep()</em>. In the final step we shutdown all the actors and threads by calling
+    <em>Actors.registry().shutdownAll()</em>. Akka also provides a factory based instantiation in case you want to
+    create actor with some state. The code below shows how to achieve it.
+</p>
+
+<script src="https://gist.github.com/albertlatacz/5411085.js?file=actorWithFactory.java"></script>
+
+<p>
+    We can now create main class and test our actors
+</p>
+
+<script src="https://gist.github.com/albertlatacz/5411085.js?file=Main.java"></script>
+
+<p>
+    Running above class should give output similar to this
+</p>
+
+<pre>
+    Unknown received Letter{size=LARGE} on akka:event-driven:dispatcher:global-1
+    Jerry received Letter{size=SMALL} on akka:event-driven:dispatcher:global-2
+</pre>
+
+<p>
+
+    That was a very brief introduction to the concept of actors and how to implement it using Akka library in Java. You
+    can download sources for this and future tutorials of the series from my <a
+        href="https://github.com/voxavion/JavaActorsWithAkka" target="_blank">GitHub repository</a>.
+</p>
+
+<p>
+    If you would like to read more about actors here are some resources:
+</p>
+
+<ol>
+    <li><em><a href="http://en.wikipedia.org/wiki/Actor_model" target="_blank">Actor model</a></em> from Wikipedia</li>
+    <li><em><a href="http://pragprog.com/book/vspcon/programming-concurrency-on-the-jvm" target="_blank">Programming
+        Concurrency on the JVM: Mastering Synchronization, STM, and Actors</a></em> from Pragmatic Bookshelf
+    </li>
+    <li><em><a href="http://java.dzone.com/articles/introducing-akka-%E2%80%93-simpler" target="_blank">Introducing Akka
+        – Simpler Scalability, Fault-Tolerance, Concurrency & Remoting Through Actors</a></em> from JavaLobby
+    </li>
+</ol>
+
+<p>
+    Watch this space for more...
+</p>

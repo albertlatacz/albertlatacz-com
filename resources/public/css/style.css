@@ -1,0 +1,34 @@
+body {
+padding-top: 60px;
+padding-bottom: 40px;
+    overflow: visible;
+}
+
+
+.right {
+    float:right;
+}
+
+.left {
+    float:left;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+
+
+
+
+
+
+
+
+
