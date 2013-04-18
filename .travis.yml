@@ -1,12 +1,15 @@
 language: clojure
 lein: lein2
 
+
 env:
     global:
         - secure: "NwHWg6Oocrwh4cLNNZbpfIdmbSnKbvtB17TrXo0hiVj1uEEQXdtkUg8YO6VL\ns5zjcBJGpDClONwMZuTrdNOa/W429SMusAerhg+ctsLmvPZb8RDG/ykN20UG\nFKdZXr1I6G2mvjd7oj4goeykqT/e1HzYhdWEVCuvQSBqPI3yJEw="
 
+
 script:
     - lein2 test
+
 
 after_script:
     - gem install heroku
