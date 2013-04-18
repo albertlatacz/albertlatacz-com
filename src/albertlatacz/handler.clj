@@ -12,6 +12,7 @@
 (defroutes app-routes
   (GET "/" [] (render-page {:page-content (render-file "java_actors_1" {})}))
   (GET "/java-actors-1" [] (render-page {:page-content (render-file "java_actors_1" {})}))
+  (GET "/java-actors-2" [] (render-page {:page-content (render-file "java_actors_2" {})}))
   (route/resources "/")
   (route/not-found "Not Found"))
 

@@ -22,23 +22,31 @@
     <link rel="shortcut icon" href="/ico/favicon.png">
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="#">Albert Latacz</a>
-            <div class="nav-collapse collapse">
-                <ul class="nav pull-right">
-                    <li class="active"><a href="/java-actors-1">Java concurrency with actors (part 1)</a></li>
-                </ul>
-                <div class="pull-left">
-                    <p class="navbar-text">multilingual thoughts...</p>
+
+
+<div class="container-fluid">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">Albert Latacz</a>
+
+                <div class="nav-collapse collapse">
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Articles<b class="caret"></b></a>
+                            <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/java-actors-1">Java concurrency with actors (part 1)</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/java-actors-2">Java concurrency with actors (part 2)</a>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="pull-left">
+                        <p class="navbar-text">multilingual thoughts...</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="container-fluid">
     {{{page-content}}}
 </div>
 
