@@ -1,16 +1,14 @@
 body {
-padding-top: 60px;
-padding-bottom: 40px;
-    overflow: visible;
+    padding-top: 60px;
+    padding-bottom: 40px;
 }
 
-
 .right {
-    float:right;
+    float: right;
 }
 
 .left {
-    float:left;
+    float: left;
 }
 
 .clearfix {

@@ -1,25 +1,15 @@
 (ns albertlatacz.handler
-  (:use compojure.core
-        stencil.core)
+  (:use compojure.core)
   (:require [compojure.handler :as handler]
-            [compojure.route :as route]))
-
-
-(defn render-page [model]
-  (render-file "_layout" model))
-
+            [compojure.route :as route]
+            [albertlatacz.pages :as page]))
 
 (defroutes app-routes
-  (GET "/" [] (render-page {:page-content (render-file "java_actors_1" {})}))
-  (GET "/java-actors-1" [] (render-page {:page-content (render-file "java_actors_1" {})}))
-  (GET "/java-actors-2" [] (render-page {:page-content (render-file "java_actors_2" {})}))
+  (GET "/" [] (page/java-actors-2))
+  (GET "/java-actors-1" [] (page/java-actors-1))
+  (GET "/java-actors-2" [] (page/java-actors-2))
   (route/resources "/")
-  (route/not-found "Not Found"))
-
-
-
-
-
+  (route/not-found (page/not-found)))
 
 (def app
   (handler/site app-routes))

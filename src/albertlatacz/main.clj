@@ -4,4 +4,5 @@
   (:require [albertlatacz.handler :as web]))
 
 (defn -main [& m]
-  (run-jetty #'web/app {:port (Integer. (get (System/getenv) "PORT" "8085"))}))
+  (let [port (Integer. (get (System/getenv) "PORT" "8085"))]
+    (run-jetty #'web/app {:port port})))
