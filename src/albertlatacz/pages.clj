@@ -15,14 +15,11 @@
     {:page-title "Java Actors with Akka (Part 2)"
      :page-description "Describes how to use Akka framework in Java"}))
 
+(defn java-repl []
+  (render-page "java_repl"
+    {:page-title "Java REPL"
+     :page-description "Implementation of Read-Eval-Print-Loop for Java language"}))
+
 (defn not-found []
   (render-page "not_found"
     {:page-title "404 - Not Found"}))
-
-(defn json-response [data & [status]]
-  {:status (or status 200)
-   :headers {"Content-Type" "application/json"}
-   :body (json/generate-string data)})
-
-(defn json-sample []
-  (json-response {:foo "bar" :baz 5}))
