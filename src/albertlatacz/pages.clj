@@ -20,6 +20,11 @@
     {:page-title "Java REPL"
      :page-description "Implementation of Read-Eval-Print-Loop for Java language"}))
 
+(defn games []
+  (render-page "games"
+    {:page-title "Games"
+     :page-description "Games portfolio"}))
+
 (defn not-found []
   (render-page "not_found"
     {:page-title "404 - Not Found"}))
