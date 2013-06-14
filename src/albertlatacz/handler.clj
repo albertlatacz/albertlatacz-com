@@ -7,8 +7,6 @@
 
 (defroutes app-routes
   (GET "/" [] (resp/redirect "/java-repl"))
-  (GET "/java-actors-1" [] (page/java-actors-1))
-  (GET "/java-actors-2" [] (page/java-actors-2))
   (GET "/java-repl" [] (page/java-repl))
   (GET "/games" [] (page/games))
   (route/resources "/")
