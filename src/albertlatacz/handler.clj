@@ -8,6 +8,7 @@
 (defroutes app-routes
   (GET "/" [] (resp/redirect "/java-repl"))
   (GET "/java-repl" [] (page/java-repl))
+  (GET "/glue-pdfs" [] (page/glue-pdfs))
   (GET "/games" [] (page/games))
   (route/resources "/")
   (route/not-found (page/not-found)))

@@ -11,6 +11,12 @@
      :page-title "Java REPL"
      :page-description "Implementation of Read-Eval-Print-Loop for Java language"}))
 
+(defn glue-pdfs []
+  (render-page "glue_pdfs"
+    {:page-name :glue-pdfs
+     :page-title "Glue PDFs"
+     :page-description "Simple PDF merging tools"}))
+
 (defn games []
   (render-page "games"
     {:page-name :games
